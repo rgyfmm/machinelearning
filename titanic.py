@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Tue Dec 14 21:17:16 2021
 
-@author: asus
-"""
 
 import pandas as pd
 import numpy as np
@@ -53,22 +49,22 @@ pd3=pd.DataFrame(train_data.groupby(['Sex'])['Survived'].value_counts(normalize=
 print(pd3)
 pd.crosstab(train_data.Sex,train_data.Survived).plot(kind='bar',ylabel='人数',width=0.4,color=['g','y'],alpha=0.6)
 
-#统计经济地位高低生存概率
+#统计经济地位阶层生存情况
 pd4=pd.DataFrame(train_data.groupby(['Pclass'])['Survived'].value_counts(normalize=True)*100)
 print(pd4)
 pd.crosstab(train_data.Pclass,train_data.Survived).plot(kind='bar',ylabel='人数',width=0.4,color=['g','y'],alpha=0.6)
 
-#统计经济地位高低性别生存概率
+#统计经济地位阶层性别生存情况
 pd5=pd.DataFrame(train_data.groupby(['Pclass'])['Sex'].value_counts())
 print(pd5)
 
-#统计登船SCQ的人数
+#统计各登船港口的人数
 train_data.Embarked.value_counts().plot(kind='line',xlabel='Starting Point',ylabel='人数',color='b',alpha=0.6,linestyle='--')
 
-#统计登场SCQ生存/死亡人数
+#统计各登船港口生存/死亡人数
 pd.crosstab(train_data.Survived,train_data.Embarked).plot(kind='bar',xlabel='Survived',ylabel='人数',width=0.4,color=['g','y','c'],alpha=0.6)
 
-#统计登SCQ各性别生存/死亡数量
+#统计各登船港口性别生存/死亡数量
 pd6=pd.DataFrame(train_data.groupby(['Embarked','Sex'])['Survived'].value_counts())
 print(pd6)
 
